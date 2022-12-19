@@ -8,6 +8,7 @@ import '../../response/response.dart';
 import '../interface/request_base.dart';
 import '../utils/body_decoder.dart';
 
+const HEADER_VALUES_SEPARATOR = '\n';
 
 /// A `dart:io` implementation of `HttpRequestBase`.
 class HttpRequestImpl extends HttpRequestBase {
@@ -54,7 +55,7 @@ class HttpRequestImpl extends HttpRequestBase {
 
       var headers = <String, String>{};
       response.headers.forEach((key, values) {
-        headers[key] = values.join(',');
+        headers[key] = values.join(HEADER_VALUES_SEPARATOR);
       });
 
       final bodyBytes = (response);
